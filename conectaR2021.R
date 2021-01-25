@@ -3,31 +3,27 @@ library(chronicle)
 tictoc::tic()
 add_code(code = "install.packages('chronicle')", eval = FALSE) %>%
   add_text(text = 'Este paquete permite crear atractivos archivos R
-Markdown html, con widgets interactivos como gr·ficos de
+Markdown html, con widgets interactivos como gr√°ficos de
 [plotly](https://plotly.com/r/), series de tiempo de
 [dygraphs](https://rstudio.github.io/dygraphs/) y tablas
-<<<<<<< HEAD
-[DataTables](https://rstudio.github.io/DT/). chronicle est· construido en
-=======
-[DataTables](https://rstudio.github.io/DT/). chronicle est· constuido en
->>>>>>> 44800b7863198c8ba812ce0b989c6df56461949c
-un paradigma de capas, que le ser· familiar e intuitivo a cualquier usuario de
+[DataTables](https://rstudio.github.io/DT/). chronicle est√° construido en
+un paradigma de capas, que le ser√° familiar e intuitivo a cualquier usuario de
 {ggplot} o {tensorflow} en R.') %>%
-  add_text(text_title = 'øPor quÈ un paradigma de capas?',
+  add_text(text_title = '¬øPor qu√© un paradigma de capas?',
            text = '\n * Un paradigma de capas provee facilidad, potencia y flexibilidad
 al flujo de trabajo. Permite a principiantes aprender una funcionalidad a la
-vez, y permite a personas m·s experimentadas trabajar con construcciones
+vez, y permite a personas m√°s experimentadas trabajar con construcciones
 robustas y complejas.
 
 *  Los reportes R markdown ya son modulares! chronicle nace de reconocer un
-archivo R Markdown como una sucesiÛn de pequeÒos mÛdulos de cÛdigo y texto') %>%
-  add_title(title = 'øCÛmo usar chronicle?') %>%
-  add_code(code_title = 'Crear archivos R Markdown a travÈs de las funciones add_*',
+archivo R Markdown como una sucesi√≥n de peque√±os m√≥dulos de c√≥digo y texto') %>%
+  add_title(title = '¬øC√≥mo usar chronicle?') %>%
+  add_code(code_title = 'Crear archivos R Markdown a trav√©s de las funciones add_*',
            title_level = 4,
            code = "
 library(chronicle)
 
-reporte_nuevo <- add_title(title = 'AsÌ se ve un reporte de chronicle', title_level = 1) %>%
+reporte_nuevo <- add_title(title = 'As√≠ se ve un reporte de chronicle', title_level = 1) %>%
   add_density(dt = iris, groups = 'Species', value = 'Sepal.Length', faceted = F) %>%
   add_boxplot(dt = iris, groups = 'Species', value = 'Sepal.Length') %>%
   add_barplot(dt = iris, bars = 'Species', value = 'Sepal.Length') %>%
@@ -39,8 +35,8 @@ reporte_nuevo <- add_title(title = 'AsÌ se ve un reporte de chronicle', title_le
             html_table_type = 'DT')
 cat(reporte_nuevo)",  eval = TRUE) %>%
   add_text(text_title = 'Las llamadas de las funciones make_*', title_level = 3,
-           text = 'Para (casi) cada funcion add_*, existe una funciÛn make_*. Estas son
-  las funciones que realmente crean los gr·ficos con todas sus especificaciones.
+           text = 'Para (casi) cada funcion add_*, existe una funci√≥n make_*. Estas son
+  las funciones que realmente crean los gr√°ficos con todas sus especificaciones.
 ') %>%
   add_code(code = "make_barplot(dt = ggplot2::mpg,
              value = 'cty',
@@ -51,16 +47,16 @@ cat(reporte_nuevo)",  eval = TRUE) %>%
            eval = TRUE) %>%
   add_text('Estas funciones se pueden llamar independientemente y agregar a
 reportes ya existentes, aplicaciones Shiny o cualquier otro lugar donde se pueda
-montar un gr·fico html. Actualmente, chronicle tiene make_barplot, make_boxplot,
+montar un gr√°fico html. Actualmente, chronicle tiene make_barplot, make_boxplot,
 make_density, make_dygraph, make_histogram, make_lineplot, make_scatterplot y
 make_violin.') %>%
-  add_text(text_title = 'CompilaciÛn del R Markdown',
-           text = 'La funciÛn render_report() se encarga de construir el
-encabezado en yaml y de hacer la compilaciÛn del archivo directamente desde el
+  add_text(text_title = 'Compilaci√≥n del R Markdown',
+           text = 'La funci√≥n render_report() se encarga de construir el
+encabezado en yaml y de hacer la compilaci√≥n del archivo directamente desde el
 ambiente global, es decir, con todos los objetos que se hayan cargado en memoria
-al momento de llamar la funciÛn. AquÌ se pueden seleccionar varios formatos
+al momento de llamar la funci√≥n. Aqu√≠ se pueden seleccionar varios formatos
 distintos e incluso compilar en varios formatos desde una misma llamada, y el
-par·metro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
+par√°metro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
   add_code(code = "render_report(filename = 'conectaR2021',
   title = 'Demo de chronicle',
   author = 'Philippe Heymans Smith @pheymanss',
@@ -71,14 +67,14 @@ par·metro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
   number_sections = FALSE,
   highlight = 'vignette')",
   eval = FALSE) %>%
-  add_text(text_title = 'øQuÈ sigue para chronicle?',
+  add_text(text_title = '¬øQu√© sigue para chronicle?',
            text = '*  Pulir otros tipos de salida: bookdown, pagedown, flexdashboard, blogdown.
-*  Agregar gr·ficos nuevos y par·metros adicionales para los existentes.
-*  Otros motores de gr·ficos interactivos: ggiraph, e_charts, highcharter*, D3 (!).',
+*  Agregar gr√°ficos nuevos y par√°metros adicionales para los existentes.
+*  Otros motores de gr√°ficos interactivos: ggiraph, e_charts, highcharter*, D3 (!).',
 title_level = 3) %>%
   # cat()
   chronicle::render_report(filename = 'index',
-                           title = '\\{chronicle\\} ReporterÌa HTML sin fricciÛn',
+                           title = '\\{chronicle\\} Reporter√≠a HTML sin fricci√≥n',
                            author = 'Philippe Heymans Smith @pheymanss',
                            keep_rmd = FALSE,
                            render_html = TRUE,
@@ -87,5 +83,6 @@ title_level = 3) %>%
                            highlight = 'vignette')
 
 tictoc::toc()
+
 
 
