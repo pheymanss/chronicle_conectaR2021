@@ -9,19 +9,19 @@ Markdown html, con widgets interactivos como gr?ficos de
 [DataTables](https://rstudio.github.io/DT/). \\{chronicle\\} est? constuido en
 un paradigma de capas, que le ser? familiar e intuitivo a cualquier usuario de
 {ggplot} o {tensorflow} en R.') %>%
-add_text(text_title = '?Por qu? un paradigma de capas?',
+add_text(text_title = '¿Por qué un paradigma de capas?',
                       ## este bullet no me gusta
   text = '\n * Un paradigma de capas provee facilidad, potencia y flexibilidad
 al flujo de trabajo.
 *  Los reportes R markdown ya son modulares! chronicle nace de reconocer un
-archivo R Markdown como una sucesi?n de peque?os m?dulos de c?digo y texto') %>%
-  add_title(title = '?C?mo usar chronicle?') %>%
-  add_code(code_title = 'Creando archivos R Markdown a trav?s de las funciones add_*',
+archivo R Markdown como una sucesión de pequeños módulos de código y texto') %>%
+  add_title(title = '¿Cómo usar chronicle?') %>%
+  add_code(code_title = 'Creando archivos R Markdown a través de las funciones add_*',
            title_level = 4,
            code = "
 library(chronicle)
 
-reporte_nuevo <- add_title(title = 'As? se ve un reporte de chronicle', title_level = 1) %>%
+reporte_nuevo <- add_title(title = 'Así se ve un reporte de chronicle', title_level = 1) %>%
   add_density(dt = iris, groups = 'Species', value = 'Sepal.Length', faceted = F) %>%
   add_boxplot(dt = iris, groups = 'Species', value = 'Sepal.Length') %>%
   add_barplot(dt = iris, bars = 'Species', value = 'Sepal.Length') %>%
@@ -33,8 +33,8 @@ reporte_nuevo <- add_title(title = 'As? se ve un reporte de chronicle', title_le
             html_table_type = 'DT')
 cat(reporte_nuevo)",  eval = TRUE) %>%
   add_text(text_title = 'Las llamadas de las funciones make_*', title_level = 3,
-  text = 'Para cada funcion add_* (casi), existe una funci?n make_*. Estas son
-  las funciones que realmente crean los gr?ficos con todas sus especificaciones.
+  text = 'Para cada funcion add_* (casi), existe una función make_*. Estas son
+  las funciones que realmente crean los gráficos con todas sus especificaciones.
 ') %>%
   add_code(code = "make_barplot(dt = ggplot2::mpg,
              value = 'cty',
@@ -45,18 +45,18 @@ cat(reporte_nuevo)",  eval = TRUE) %>%
            eval = TRUE) %>%
   add_text('Estas funciones se pueden llamar independientemente y agregar a
 reportes ya existentes, aplicaciones Shiny o cualquier otro lugar donde se pueda
-montar un gr?fico html. Actualmente, chronicle tiene make_barplot, make_boxplot,
+montar un gráfico html. Actualmente, chronicle tiene make_barplot, make_boxplot,
 make_density, make_dygraph, make_histogram, make_lineplot, make_scatterplot y
 make_violin.') %>%
-  add_text(text_title = 'Compilaci?n del R Markdown',
-           text = 'La funci?n render_report() se encarga de construir el
-encabezado en yaml y de hacer la compilaci?n del archivo directamente desde el
+  add_text(text_title = 'Compilación del R Markdown',
+           text = 'La función render_report() se encarga de construir el
+encabezado en yaml y de hacer la compilación del archivo directamente desde el
 ambiente global, es decir, con todos los objetos que se hayan cargado en memoria
-al momento de llamar la funci?n. Aqu? se pueden seleccionar varios formatos
+al momento de llamar la función. Aquí se pueden seleccionar varios formatos
 distintos e incluso compilar en varios formatos desde una misma llamada, y el
-par?metro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
+parámetro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
   add_code(code = "chronicle::render_report(filename = 'conectaR2021',
-  title = 'Gram?tica de capas para reportes con \\{chronicle\\}',
+  title = 'Gramática de capas para reportes con \\{chronicle\\}',
   author = 'Philippe Heymans Smith @pheymanss',
   keep_rmd = TRUE,
   render_html = TRUE,
@@ -64,14 +64,14 @@ par?metro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
   number_sections = FALSE,
   highlight = 'vignette')",
            eval = FALSE) %>%
-  add_text(text_title = '?Qu? sigue para chronicle?',
+  add_text(text_title = '¿Qué sigue para chronicle?',
            text = '*  Pulir otros tipos de salida: bookdown, pagedown, flexdashboard, blogdown.
-*  Agregar gr?ficos nuevos y par?metros adicionales para los existentes.
-*  Otros motores de gr?ficos interactivos: ggiraph, e_charts, highcharter*, D3 (!).',
+*  Agregar gráficos nuevos y parámetros adicionales para los existentes.
+*  Otros motores de gráficos interactivos: ggiraph, e_charts, highcharter*, D3 (!).',
            title_level = 3) %>%
   # cat()
   chronicle::render_report(filename = 'conectaR2021',
-                           title = 'Gram?tica de capas para reportes con \\{chronicle\\}',
+                           title = '\\{chronicle\\} Reportería HTML sin fricción',
                            author = 'Philippe Heymans Smith @pheymanss',
                            keep_rmd = FALSE,
                            render_html = TRUE,
