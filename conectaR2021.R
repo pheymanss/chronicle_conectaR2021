@@ -6,17 +6,19 @@ add_text(text = 'Este paquete permite crear atractivos archivos R
 Markdown html, con widgets interactivos como gráficos de
 [plotly](https://plotly.com/r/), series de tiempo de
 [dygraphs](https://rstudio.github.io/dygraphs/) y tablas
-[DataTables](https://rstudio.github.io/DT/). \\{chronicle\\} está constuido en
+[DataTables](https://rstudio.github.io/DT/). chronicle está constuido en
 un paradigma de capas, que le será familiar e intuitivo a cualquier usuario de
 {ggplot} o {tensorflow} en R.') %>%
 add_text(text_title = '¿Por qué un paradigma de capas?',
-                      ## este bullet no me gusta
   text = '\n * Un paradigma de capas provee facilidad, potencia y flexibilidad
-al flujo de trabajo.
+al flujo de trabajo. Permite a principiantes aprender una funcionalidad a la
+vez, y permite a personas más experimentadas trabajar con construcciones
+robustas y complejas.
+
 *  Los reportes R markdown ya son modulares! chronicle nace de reconocer un
 archivo R Markdown como una sucesión de pequeños módulos de código y texto') %>%
   add_title(title = '¿Cómo usar chronicle?') %>%
-  add_code(code_title = 'Creando archivos R Markdown a través de las funciones add_*',
+  add_code(code_title = 'Crear archivos R Markdown a través de las funciones add_*',
            title_level = 4,
            code = "
 library(chronicle)
@@ -26,14 +28,14 @@ reporte_nuevo <- add_title(title = 'Así se ve un reporte de chronicle', title_l
   add_boxplot(dt = iris, groups = 'Species', value = 'Sepal.Length') %>%
   add_barplot(dt = iris, bars = 'Species', value = 'Sepal.Length') %>%
   add_table(table = head(iris),
-          table_title = 'La famosa tabla iris',
+          table_title = 'La famosa tabla iris, en una tabla de kable',
           html_table_type = 'kable') %>%
   add_table(table = ggplot2::mpg[],
-            table_title = 'Y esta es mpg de ggplot2',
+            table_title = 'Y esta es mpg de ggplot2, en una tabla DataTable',
             html_table_type = 'DT')
 cat(reporte_nuevo)",  eval = TRUE) %>%
   add_text(text_title = 'Las llamadas de las funciones make_*', title_level = 3,
-  text = 'Para cada funcion add_* (casi), existe una función make_*. Estas son
+  text = 'Para (casi) cada funcion add_*, existe una función make_*. Estas son
   las funciones que realmente crean los gráficos con todas sus especificaciones.
 ') %>%
   add_code(code = "make_barplot(dt = ggplot2::mpg,
@@ -55,9 +57,10 @@ ambiente global, es decir, con todos los objetos que se hayan cargado en memoria
 al momento de llamar la función. Aquí se pueden seleccionar varios formatos
 distintos e incluso compilar en varios formatos desde una misma llamada, y el
 parámetro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
-  add_code(code = "chronicle::render_report(filename = 'conectaR2021',
-  title = 'Gramática de capas para reportes con \\{chronicle\\}',
+  add_code(code = "render_report(filename = 'conectaR2021',
+  title = 'Demo de chronicle',
   author = 'Philippe Heymans Smith @pheymanss',
+  output_format = c('prettydoc', 'ioslides'),
   keep_rmd = TRUE,
   render_html = TRUE,
   table_of_content = FALSE,
