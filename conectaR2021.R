@@ -3,11 +3,11 @@ library(chronicle)
 tictoc::tic()
 add_code(code = "install.packages('chronicle')", eval = FALSE) %>%
 add_text(text = 'Este paquete permite crear atractivos archivos R
-Markdown html, con widgets interactivos como gr?ficos de
+Markdown html, con widgets interactivos como gráficos de
 [plotly](https://plotly.com/r/), series de tiempo de
 [dygraphs](https://rstudio.github.io/dygraphs/) y tablas
-[DataTables](https://rstudio.github.io/DT/). \\{chronicle\\} est? constuido en
-un paradigma de capas, que le ser? familiar e intuitivo a cualquier usuario de
+[DataTables](https://rstudio.github.io/DT/). \\{chronicle\\} está constuido en
+un paradigma de capas, que le será familiar e intuitivo a cualquier usuario de
 {ggplot} o {tensorflow} en R.') %>%
 add_text(text_title = '¿Por qué un paradigma de capas?',
                       ## este bullet no me gusta
@@ -70,7 +70,7 @@ parámetro keep_rmd permite conservar el (los) archivo(s) R Markdown.') %>%
 *  Otros motores de gráficos interactivos: ggiraph, e_charts, highcharter*, D3 (!).',
            title_level = 3) %>%
   # cat()
-  chronicle::render_report(filename = 'conectaR2021',
+  chronicle::render_report(filename = 'index',
                            title = '\\{chronicle\\} Reportería HTML sin fricción',
                            author = 'Philippe Heymans Smith @pheymanss',
                            keep_rmd = FALSE,
